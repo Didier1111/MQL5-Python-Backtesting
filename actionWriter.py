@@ -4,7 +4,6 @@ import os
 import copy, sys
 import pandas as pd
 import numpy as np
-import talib
 import json
 from output import output
 

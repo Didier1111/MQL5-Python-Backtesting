@@ -1,6 +1,5 @@
 # import your trading strategy here
-#from sma_ema import SimpleMAExponentialMA
-from trading_strategies.sma_ema import SimpleMAExponentialMA
+# from trading_strategies.sma_ema import SimpleMAExponentialMA
 #from trading_strategies.adx_crossover import AdxCrossover
 #from trading_strategies.aroon_adx import AroonAdx
 #from trading_strategies.sma_mi import SMAMI
@@ -40,6 +39,8 @@ from datetime import datetime
 import pandas as pd
 # non-optional import:
 from actionWriter import actionWriter
+from trading_strategies.absorption_volume_profile import AbsorptionVolumeProfile
+import os
 
 class DecisionMaker:
 
@@ -75,7 +76,8 @@ class DecisionMaker:
         print("current price is: ", curr_close_price)
 
         # Run strategy here #
-        strategy = SimpleMAExponentialMA(history)
+        # strategy = SimpleMAExponentialMA(history)
+        strategy = AbsorptionVolumeProfile(history)
         #strategy = AdxCrossover(history)
         #strategy = AroonAdx(history)
         #strategy = SMAMI(history)
@@ -107,7 +109,7 @@ class DecisionMaker:
         #strategy = DonchianBreakout(history)
         #strategy = CommodityChannelIndex(history)
 
-        signal_lst, df = strategy.run_sma_ema()
+        signal_lst, df = strategy.run()
         #signal_lst, df = strategy.run_aroon_adx()
         #signal_lst, df = strategy.run_awesome_oscillator_saucer()
         #signal_lst, df = strategy.run_bollingerbands_rsi_2()
